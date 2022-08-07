@@ -1,21 +1,18 @@
-const express = require('express');
-const router = express.Router();
+const { Client } = require('pg');
 
-const db = require('./db/db');
+const client = new Client({
+  connectionString: process.env.ENV_DATABASE,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
-router.get('/', (req, res, next) => {
-  db.pool.connect((err, client) => {
-    if (err) {
-      console.log(err);
-      console.log("error 1");
-    } else {
-      client.query('SELECT * FROM users;', (err, result) => {
-        console.log(result.rows);
-        console.log("error 2");
-      });
-    }
-  });
-  res.render('index', {
-    title: 'hello express',
-  });
+client.connect();
+
+client.query('SELECT * FROM users;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
 });
