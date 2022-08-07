@@ -7,9 +7,11 @@ router.get('/', (req, res, next) => {
   db.pool.connect((err, client) => {
     if (err) {
       console.log(err);
+      console.log("error 1");
     } else {
-      client.query('SELECT * FROM user', (err, result) => {
+      client.query('SELECT * FROM user;', (err, result) => {
         console.log(result.rows);
+        console.log("error 2");
       });
     }
   });
