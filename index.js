@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
       console.log(err);
       console.log("error 1");
     } else {
-      client.query('SELECT * FROM user;', (err, result) => {
+      client.query('SELECT * FROM users;', (err, result) => {
         console.log(result.rows);
         console.log("error 2");
       });
