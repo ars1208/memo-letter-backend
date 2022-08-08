@@ -1,18 +1,8 @@
-const { Client } = require('pg');
+const express = require("express");
+const app = express();
 
-const client = new Client({
-  connectionString: process.env.ENV_DATABASE,
-  ssl: {
-    rejectUnauthorized: false
-  }
+app.get("/", function (req, res) {
+  res.send("Hello world!");
 });
 
-client.connect();
-
-client.query('SELECT * FROM users;', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-});
+app.listen(3000, () => console.log("Example app listening on port 3000"));
