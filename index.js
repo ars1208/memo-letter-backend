@@ -7,4 +7,8 @@ app.get("/", function (req, res) {
   res.send("Hello world!");
 });
 
+app.get("/jp", function (req, res) {
+  res.send("こんにちは!");
+});
+
 app.listen(app.get('port'), () => console.log("Example app listening on port " + app.get('port')));
