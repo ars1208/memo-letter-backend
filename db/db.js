@@ -1,10 +1,16 @@
-const pg = require('pg');
-require('dotenv').config();
+const { Pool } = require('pg');
 
-exports.pool = new pg.Pool ({
+// DB情報を持ったPoolを生成
+exports.pool = new Pool ({
   host: process.env.ENV_HOST,
   database: process.env.ENV_DATABASE,
   user: process.env.ENV_USER,
   port: process.env.ENV_PORT,
   password: process.env.ENV_PASSWORD,
+  ssl: {
+    sslmode: 'require',
+    rejectUnauthorized: false
+  }
 });
+
+module.exports = pool;

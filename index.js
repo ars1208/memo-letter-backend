@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 
+const pool = require('./db/db');
+
 app.set('port', (process.env.PORT || 3000));
 
 app.get("/", function (req, res) {
@@ -10,6 +12,17 @@ app.get("/", function (req, res) {
 app.get("/jp", function (req, res) {
   const name = req.query.name || 'Name';
   res.send(`こんにちは! ${name}さん\n`);
+});
+
+app.get("/show", function (req, res) {
+  pool.query('SELECT * FROM users', function(err, results) {
+    if (err) {
+      throw err
+    }
+    res.status(200).json({
+      data: results.rows
+    });
+  });
 });
 
 app.listen(app.get('port'), () => console.log("Example app listening on port " + app.get('port')));
