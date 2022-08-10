@@ -6,12 +6,11 @@ const pool = require('./db/db');
 app.set('port', (process.env.PORT || 3000));
 
 app.get("/", function (req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080")
+  res.setHeader("Access-Control-Allow-Origin", "https://ars1208.github.io/")
   res.send("Hello world!");
 });
 
 app.get("/jp", function (req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080")
   const name = req.query.name || 'Name';
   res.send(`こんにちは! ${name}さん\n`);
 });
@@ -21,7 +20,7 @@ app.get("/show", function (req, res) {
     if (err) {
       throw err
     }
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080")
+    res.setHeader("Access-Control-Allow-Origin", "https://ars1208.github.io/")
     res.status(200).json({
       data: results.rows
     });
