@@ -9,7 +9,7 @@ app.get("/", function (req, res) {
 
 app.get("/jp", function (req, res) {
   const name = req.query.name || 'Name';
-  res.send(`こんにちは! ${name}さん¥n`);
+  res.send(`こんにちは! ${name}さん\n`);
 });
 
 app.listen(app.get('port'), () => console.log("Example app listening on port " + app.get('port')));
