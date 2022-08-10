@@ -6,7 +6,6 @@ const pool = require('./db/db');
 app.set('port', (process.env.PORT || 3000));
 
 app.get("/", function (req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "https://ars1208.github.io/")
   res.send("Hello world!");
 });
 
