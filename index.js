@@ -7,7 +7,7 @@ const pool = require('./db/db');
 app.set('port', (process.env.PORT || 3000));
 
 app.get("/login", function(req, res) {
-  bcrypt.hash(req.body.password, 10, function(err, hash) {
+  // bcrypt.hash(req.body.password, 10, function(err, hash) {
     pool.query('SELECT * FROM REGISTERED_USERS WHERE user_name = ArashiKazuki;', function(err, results) {
       if (err) {
         throw err
@@ -18,7 +18,7 @@ app.get("/login", function(req, res) {
       });
     });
     // var query = pool.query("SELECT * FROM REGISTERED_USERS WHERE user_name = $1;", [req.body.userId]);
-  })
+  // })
 })
 
 app.get("/", function (req, res) {
