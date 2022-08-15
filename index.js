@@ -22,7 +22,7 @@ app.get("/login", function(req, res) {
     });
     // var query = pool.query("SELECT * FROM REGISTERED_USERS WHERE user_name = $1;", [req.body.userId]);
   // })
-})
+});
 
 app.get("/", function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "https://ars1208.github.io")
