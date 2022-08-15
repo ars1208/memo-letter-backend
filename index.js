@@ -11,7 +11,7 @@ app.set('port', (process.env.PORT || 3000));
 
 app.get("/login", function(req, res) {
   // bcrypt.hash(req.body.password, 10, function(err, hash) {
-    pool.query('SELECT * FROM REGISTERED_USERS WHERE user_name = ArashiKazuki;', function(err, results) {
+    pool.query("SELECT * FROM REGISTERED_USERS WHERE user_name='ArashiKazuki';", function(err, results) {
       if (err) {
         throw err
       }
