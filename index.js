@@ -25,18 +25,16 @@ app.get("/logout", function(req, res) {
 })
 
 app.post("/login", function(req, res) {
-  console.log("Hi");
-  bcrypt.hash(req.body.password, 10, function(err, hash) {
-    console.log("Hi");
+  bcrypt.hash(req.password, 10, function(err, hash) {
     pool.query(`SELECT * FROM REGISTERED_USERS WHERE user_name="${req.body.userId}";`, async function(err, row) {
       const compared = await bcrypt.compare(req.body.password, row.password);
-      console.log("Hi");
 
       if (compared) {
         req.session.login = row.userId;
         console.log(req.session)
       }
 
+      res.setHeader("Access-Control-Allow-Origin", "https://ars1208.github.io")
       res.redirect("/");
     })
   });
