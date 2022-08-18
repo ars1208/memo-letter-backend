@@ -25,9 +25,12 @@ app.get("/logout", function(req, res) {
 })
 
 app.post("/login", function(req, res) {
+  console.log("Hi");
   bcrypt.hash(req.body.password, 10, function(err, hash) {
+    console.log("Hi");
     pool.query(`SELECT * FROM REGISTERED_USERS WHERE user_name="${req.body.userId}";`, async function(err, row) {
       const compared = await bcrypt.compare(req.body.password, row.password);
+      console.log("Hi");
 
       if (compared) {
         req.session.login = row.userId;
