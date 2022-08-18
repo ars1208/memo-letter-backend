@@ -27,7 +27,7 @@ app.get("/logout", function(req, res) {
 app.post("/login", function(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "https://ars1208.github.io")
   bcrypt.hash(req.password, 10, function(err, hash) {
-    console.log(req);
+    console.log(req.body);
     pool.query(`SELECT * FROM REGISTERED_USERS WHERE user_name="${req.userId}";`, async function(err, results) {
       if (err) {
         throw err
