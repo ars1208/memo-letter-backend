@@ -31,7 +31,6 @@ app.post("/login", function(req, res) {
       if (err) {
         throw err
       }
-      res.setHeader("Access-Control-Allow-Origin", "https://ars1208.github.io")
       res.status(200).json({
         data: results.rows
       });
